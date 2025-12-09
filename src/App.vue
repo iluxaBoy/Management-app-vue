@@ -9,9 +9,10 @@ import NotificationComponent from '@/components/common/NotificationComponent.vue
 
 const dataStore = useDataStore()
 
-const API_BASE_URL = 'http://localhost:3000'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
 
 const fetchProjects = async () => {
+  if (!import.meta.env.VITE_API_BASE_URL && import.meta.env.PROD) return
   try {
     const { data } = await axios.get(`${API_BASE_URL}/projects/`)
     dataStore.projectsData = data
@@ -22,6 +23,7 @@ const fetchProjects = async () => {
 }
 
 const fetchTasks = async () => {
+  if (!import.meta.env.VITE_API_BASE_URL && import.meta.env.PROD) return
   try {
     const { data } = await axios.get(`${API_BASE_URL}/tasks/`)
     dataStore.tasksData = data

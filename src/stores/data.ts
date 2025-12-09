@@ -6,6 +6,7 @@ import { NotificationType } from '@/types/enumsUse'
 import type { Project, Task } from '@/types/dataTypes'
 // Applications
 import axios from 'axios'
+import db from '../../db.json'
 
 export const useDataStore = defineStore('data', () => {
   const projectsData = ref<Project[]>([])
@@ -28,13 +29,28 @@ export const useDataStore = defineStore('data', () => {
   }
 
   const getDataFromStorage = () => {
-    projectsData.value = JSON.parse(localStorage.getItem('projectsData') || '[]')
-    tasksData.value = JSON.parse(localStorage.getItem('tasksData') || '[]')
+    const storedProjects = localStorage.getItem('projectsData')
+    const storedTasks = localStorage.getItem('tasksData')
+
+    if (storedProjects) {
+      projectsData.value = JSON.parse(storedProjects)
+    } else {
+      projectsData.value = db.projects as unknown as Project[]
+      localStorage.setItem('projectsData', JSON.stringify(projectsData.value))
+    }
+
+    if (storedTasks) {
+      tasksData.value = JSON.parse(storedTasks)
+    } else {
+      tasksData.value = db.tasks as unknown as Task[]
+      localStorage.setItem('tasksData', JSON.stringify(tasksData.value))
+    }
   }
 
-  const API_BASE_URL = 'http://localhost:3000'
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
 
   const postDataProjects = async (project: Project) => {
+    if (!import.meta.env.VITE_API_BASE_URL && import.meta.env.PROD) return
     try {
       await axios.post(`${API_BASE_URL}/projects`, { ...project, id: String(project.id) })
     } catch (error) {
@@ -44,6 +60,7 @@ export const useDataStore = defineStore('data', () => {
   }
 
   const postDataTasks = async (task: Task) => {
+    if (!import.meta.env.VITE_API_BASE_URL && import.meta.env.PROD) return
     try {
       await axios.post(`${API_BASE_URL}/tasks`, { ...task, id: String(task.id) })
     } catch (error) {
@@ -53,6 +70,7 @@ export const useDataStore = defineStore('data', () => {
   }
 
   const putDataTasks = async (task: Task) => {
+    if (!import.meta.env.VITE_API_BASE_URL && import.meta.env.PROD) return
     try {
       const { data } = await axios.get<Task[]>(`${API_BASE_URL}/tasks?id=${task.id}`)
 
@@ -71,6 +89,7 @@ export const useDataStore = defineStore('data', () => {
   }
 
   const putDataProjects = async (project: Project) => {
+    if (!import.meta.env.VITE_API_BASE_URL && import.meta.env.PROD) return
     try {
       const { data } = await axios.get<Project[]>(`${API_BASE_URL}/projects?id=${project.id}`)
 
