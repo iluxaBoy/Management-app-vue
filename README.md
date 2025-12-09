@@ -1,48 +1,66 @@
-# .
+# Management App Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+A modern project management application built with Vue 3, TypeScript, and Tailwind CSS. This application allows users to manage projects and tasks efficiently with features like Kanban and Table views, filtering, sorting, and real-time status updates.
 
-## Recommended IDE Setup
+[Visit Live Demo](https://www.management-app-vue-fake-link.com)
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Features
 
-## Recommended Browser Setup
+- **Project Management**: Create and track multiple projects.
+- **Task Tracking**: Add tasks to projects with deadlines, performers, and statuses.
+- **Views**: Switch between Table and Kanban views for flexible task visualization.
+- **Filtering & Sorting**: Filter projects by name and sort by various criteria (ID, Name, Status, etc.).
+- **Data Persistence**: Data is persisted using a local JSON server, simulating a real backend environment.
+- **Notifications**: Real-time notifications for actions (Success/Error).
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Getting Started
 
-## Type Support for `.vue` Imports in TS
+Follow these instructions to get a copy of the project up and running on your local machine.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### Prerequisites
 
-## Customize configuration
+- Node.js (version 20.19.0 or higher recommended)
+- npm (Node Package Manager)
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### Installation
 
-## Project Setup
+1. **Clone the repository** (if applicable) or navigate to the project directory:
 
-```sh
-npm install
-```
+   ```sh
+   cd Management-app-vue
+   ```
 
-### Compile and Hot-Reload for Development
+2. **Install dependencies**:
+   ```sh
+   npm install
+   ```
 
-```sh
-npm run dev
-```
+### Running the Application
 
-### Type-Check, Compile and Minify for Production
+To fully run the application, you need to start both the backend (JSON server) and the frontend.
 
-```sh
-npm run build
-```
+1. **Start the Backend Server**:
+   This application uses `json-server` to mock a backend API.
+   Open a terminal and run:
 
-### Lint with [ESLint](https://eslint.org/)
+   ```sh
+   npm run db
+   ```
 
-```sh
-npm run lint
-```
+   The API server will start at `http://localhost:3000`.
+
+2. **Start the Frontend Development Server**:
+   Open a **new terminal window/tab** and run:
+   ```sh
+   npm run dev
+   ```
+   The application will start, typically at `http://localhost:5173` (check the terminal output for the exact URL).
+
+## Technologies Used
+
+- **[Vue 3](https://vuejs.org/)**: The progressive JavaScript framework.
+- **[TypeScript](https://www.typescriptlang.org/)**: For type safety and better developer experience.
+- **[Pinia](https://pinia.vuejs.org/)**: The intuitive store for Vue.js.
+- **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework.
+- **[Axios](https://axios-http.com/)**: Promise based HTTP client for the browser and node.js.
+- **[JSON Server](https://github.com/typicode/json-server)**: Get a full fake REST API with zero coding.
