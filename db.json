@@ -1,0 +1,170 @@
+{
+  "projects": [
+    {
+      "id": "1",
+      "name": "Project 1",
+      "status": "Completed",
+      "createdAt": "01-01-2023",
+      "description": "This is project 1"
+    },
+    {
+      "id": "2",
+      "name": "Project 2",
+      "status": "In Progress",
+      "createdAt": "01-02-2023",
+      "description": "This is project 2"
+    },
+    {
+      "id": "3",
+      "name": "Project 3",
+      "status": "In Progress",
+      "createdAt": "01-03-2023",
+      "description": "This is project 3"
+    },
+    {
+      "id": "4",
+      "name": "Project 4",
+      "status": "In Progress",
+      "createdAt": "01-04-2023",
+      "description": "This is project 4"
+    },
+    {
+      "id": "1765298291661",
+      "name": "aha",
+      "status": "In Progress",
+      "createdAt": "9-12-2025",
+      "description": "",
+      "tasksAmount": 0
+    },
+    {
+      "id": "1765298503644",
+      "name": "new",
+      "status": "To Do",
+      "createdAt": "9-12-2025",
+      "description": "some",
+      "tasksAmount": 0
+    },
+    {
+      "id": "1765300552694",
+      "name": "aha",
+      "status": "To Do",
+      "createdAt": "9-12-2025",
+      "description": "",
+      "tasksAmount": 0
+    }
+  ],
+  "tasks": [
+    {
+      "id": "101",
+      "projectId": 1,
+      "name": "Task 1",
+      "performer": "John Doe",
+      "status": "Completed",
+      "deadline": "01-10-2023"
+    },
+    {
+      "id": "102",
+      "projectId": 1,
+      "name": "Task 2",
+      "performer": "Jane Doe",
+      "status": "Completed",
+      "deadline": "03-10-2023"
+    },
+    {
+      "id": "201",
+      "projectId": 2,
+      "name": "Task 3",
+      "performer": "John Doe",
+      "status": "Completed",
+      "deadline": "02-10-2023"
+    },
+    {
+      "id": "202",
+      "projectId": 2,
+      "name": "Task 4",
+      "performer": "Jane Doe",
+      "status": "In Progress",
+      "deadline": "04-10-2023"
+    },
+    {
+      "id": "301",
+      "projectId": 3,
+      "name": "Task 5",
+      "performer": "John Doe",
+      "status": "In Progress",
+      "deadline": "05-10-2023"
+    },
+    {
+      "id": "302",
+      "projectId": 3,
+      "name": "Task 6",
+      "performer": "Jane Doe",
+      "status": "In Progress",
+      "deadline": "08-10-2023"
+    },
+    {
+      "id": "401",
+      "projectId": 4,
+      "name": "Task 7",
+      "performer": "John Doe",
+      "status": "To Do",
+      "deadline": "04-10-2023"
+    },
+    {
+      "id": "402",
+      "projectId": 4,
+      "name": "Task 8",
+      "performer": "Jane Doe",
+      "status": "In Progress",
+      "deadline": "08-10-2023"
+    },
+    {
+      "id": "1765298303929",
+      "projectId": 1765298291661,
+      "name": "some",
+      "performer": "me",
+      "deadline": "2025-12-18",
+      "status": "To Do"
+    },
+    {
+      "id": "1765298391613",
+      "projectId": 1765298291661,
+      "name": "some",
+      "performer": "me",
+      "deadline": "2025-12-26",
+      "status": "In Progress"
+    },
+    {
+      "id": "1765298543121",
+      "projectId": 1765298503644,
+      "name": "aha",
+      "performer": "u",
+      "deadline": "2025-12-18",
+      "status": "Completed"
+    },
+    {
+      "id": "1765299658669",
+      "projectId": 1765298503644,
+      "name": "som",
+      "performer": "",
+      "deadline": "",
+      "status": "To Do"
+    },
+    {
+      "id": "1765299981992",
+      "projectId": 1,
+      "name": "some",
+      "performer": "u",
+      "deadline": "",
+      "status": "Completed"
+    },
+    {
+      "id": "1765300484527",
+      "projectId": 1,
+      "name": "more",
+      "performer": "me",
+      "deadline": "2025-12-18",
+      "status": "Completed"
+    }
+  ]
+}
