@@ -14,7 +14,8 @@
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix --cache",
     "format": "prettier --write --experimental-cli src/",
-    "db": "json-server --watch db.json"
+    "db": "json-server --watch db.json",
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
     "axios": "^1.13.2",
