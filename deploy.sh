@@ -7,6 +7,7 @@ npm run build
 cd dist
 
 touch .nojekyll
+cp index.html 404.html
 
 git init
 git checkout -B main

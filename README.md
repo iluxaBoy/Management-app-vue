@@ -2,7 +2,7 @@
 
 A modern project management application built with Vue 3, TypeScript, and Tailwind CSS. This application allows users to manage projects and tasks efficiently with features like Kanban and Table views, filtering, sorting, and real-time status updates.
 
-[Visit Live Demo](https://www.management-app-vue-fake-link.com)
+[Visit Live Demo](https://iluxaboy.github.io/Management-app-vue/)
 
 ## Features
 
