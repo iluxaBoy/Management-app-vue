@@ -4,8 +4,8 @@ import { onMounted, ref } from 'vue'
 import { TaskStatus } from '@/types/enumsUse'
 import { NotificationType } from '@/types/enumsUse'
 import type { Project, Task } from '@/types/dataTypes'
-// Applications
-import axios from 'axios'
+// Utils
+import { postDataProjects, postDataTasks, putDataTasks, putDataProjects } from '@/utils/dataFetching'
 import db from '../../db.json'
 
 export const useDataStore = defineStore('data', () => {
@@ -44,70 +44,6 @@ export const useDataStore = defineStore('data', () => {
     } else {
       tasksData.value = db.tasks as unknown as Task[]
       localStorage.setItem('tasksData', JSON.stringify(tasksData.value))
-    }
-  }
-
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
-
-  const postDataProjects = async (project: Project) => {
-    if (!import.meta.env.VITE_API_BASE_URL && import.meta.env.PROD) return
-    try {
-      await axios.post(`${API_BASE_URL}/projects`, { ...project, id: String(project.id) })
-    } catch (error) {
-      console.error('Error posting project:', error)
-      showNotification('Error posting project', NotificationType.ERROR)
-    }
-  }
-
-  const postDataTasks = async (task: Task) => {
-    if (!import.meta.env.VITE_API_BASE_URL && import.meta.env.PROD) return
-    try {
-      await axios.post(`${API_BASE_URL}/tasks`, { ...task, id: String(task.id) })
-    } catch (error) {
-      console.error('Error posting task:', error)
-      showNotification('Error posting task', NotificationType.ERROR)
-    }
-  }
-
-  const putDataTasks = async (task: Task) => {
-    if (!import.meta.env.VITE_API_BASE_URL && import.meta.env.PROD) return
-    try {
-      const { data } = await axios.get<Task[]>(`${API_BASE_URL}/tasks?id=${task.id}`)
-
-      const taskExists = Array.isArray(data) && data.some((t) => String(t.id) === String(task.id))
-
-      if (taskExists) {
-        await axios.put(`${API_BASE_URL}/tasks/${task.id}`, { ...task, id: String(task.id) })
-      } else {
-        console.warn(`Task ${task.id} not found on server. Creating it...`)
-        await postDataTasks(task)
-      }
-    } catch (error) {
-      console.error('Error updating task:', error)
-      showNotification('Error updating task', NotificationType.ERROR)
-    }
-  }
-
-  const putDataProjects = async (project: Project) => {
-    if (!import.meta.env.VITE_API_BASE_URL && import.meta.env.PROD) return
-    try {
-      const { data } = await axios.get<Project[]>(`${API_BASE_URL}/projects?id=${project.id}`)
-
-      const projectExists =
-        Array.isArray(data) && data.some((p) => String(p.id) === String(project.id))
-
-      if (projectExists) {
-        await axios.put(`${API_BASE_URL}/projects/${project.id}`, {
-          ...project,
-          id: String(project.id),
-        })
-      } else {
-        console.warn(`Project ${project.id} not found on server. Creating it...`)
-        await postDataProjects(project)
-      }
-    } catch (error) {
-      console.error('Error updating project:', error)
-      showNotification('Error updating project', NotificationType.ERROR)
     }
   }
 
@@ -160,5 +96,6 @@ export const useDataStore = defineStore('data', () => {
     addTask,
     updateTaskStatus,
     updateProjectStatus,
+    showNotification,
   }
 })
