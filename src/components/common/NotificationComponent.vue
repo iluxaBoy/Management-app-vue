@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { useDataStore } from '@/stores/data'
 import { computed } from 'vue'
+// Stores
+import { useDataStore } from '@/stores/data'
+// Types
+import { NotificationType } from '@/types/enumsUse'
 
 const dataStore = useDataStore()
 
@@ -8,11 +11,11 @@ const notification = computed(() => dataStore.notification)
 
 const typeClasses = computed(() => {
   switch (notification.value.type) {
-    case 'success':
+    case NotificationType.SUCCESS:
       return 'bg-green-500 text-white'
-    case 'error':
+    case NotificationType.ERROR:
       return 'bg-red-500 text-white'
-    case 'info':
+    case NotificationType.INFO:
       return 'bg-blue-500 text-white'
     default:
       return 'bg-gray-500 text-white'
